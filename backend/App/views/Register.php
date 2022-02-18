@@ -87,31 +87,50 @@ echo $header;
                                                                     </div>
                                                                     <div class="col-12 col-sm-4">
                                                                         <label>Name *</label>
-                                                                        <input class="multisteps-form__input form-control all_input" type="text" id="name_user" name="name_user" maxlength="15" placeholder="eg. Christopher" required disabled>
+                                                                        <input class="multisteps-form__input form-control all_input" type="text" id="name_user" name="name_user" maxlength="15" placeholder="eg. Christopher" required style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" disabled>
                                                                     </div>
                                                                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                                                         <label>Middle Name</label>
-                                                                        <input class="multisteps-form__input form-control" type="text" id="middle_name" name="middle_name" maxlength="15" placeholder="eg. Prior" disabled>
+                                                                        <input class="multisteps-form__input form-control" type="text" id="middle_name" name="middle_name" maxlength="15" placeholder="eg. Prior" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" disabled>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mt-3">
                                                                     <div class="col-12 col-sm-6">
                                                                         <label>Surname *</label>
-                                                                        <input class="multisteps-form__input form-control all_input" type="text" id="surname" name="surname" maxlength="15" placeholder="eg. Jones" disabled>
+                                                                        <input class="multisteps-form__input form-control all_input" type="text" id="surname" name="surname" maxlength="15" placeholder="eg. Jones" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" disabled>
                                                                     </div>
                                                                     <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                                                         <label>Second surname</label>
-                                                                        <input class="multisteps-form__input form-control" type="text" id="second_surname" name="second_surname" maxlength="15" placeholder="eg. Wilson" disabled>
+                                                                        <input class="multisteps-form__input form-control" type="text" id="second_surname" name="second_surname" maxlength="15" placeholder="eg. Wilson" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();" disabled>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mt-3">
-                                                                    <div class="col-12 col-sm-6">
+                                                                    <div class="col-12 col-sm-4">
                                                                         <label>Telephone</label>
                                                                         <input class="multisteps-form__input form-control" type="text" id="telephone" name="telephone" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="eg. (555) 555-1234" disabled>
                                                                     </div>
-                                                                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                                                    <div class="col-12 col-sm-4">
                                                                         <label>International dialling code</label>
                                                                         <input class="multisteps-form__input form-control" type="text" id="telephone_code" name="telephone_code" maxlength="3" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="eg. +1" disabled>
+                                                                    </div>
+                                                                    <div class="col-12 col-sm-4">
+                                                                        <label>Specialties *</label>
+                                                                        <select class="multisteps-form__select form-control all_input_select" name="specialties" id="specialties" disabled>
+                                                                            <option value="" disabled selected>Select Option</option>
+                                                                            <option value="Psychiatrist">Psychiatrist</option>
+                                                                            <option value=">Child Psychiatry">Child Psychiatry</option>
+                                                                            <option value="Neurology">Neurology</option>
+                                                                            <option value="Pediatric Neurology">Pediatric Neurology</option>
+                                                                            <option value="Paidapsychiatry">Paidapsychiatry</option>
+                                                                            <option value="Pedagogy">Pedagogy</option>
+                                                                            <option value="Psychogeriatrics">Psychogeriatrics</option>
+                                                                            <option value="Psychology">Psychology</option>
+                                                                            <option value="Clinical psychology">Clinical psychology</option>
+                                                                            <option value="Residents">Residents</option>
+                                                                            <option value="Students">Students</option>
+                                                                            <option value="Others">Others</option>
+
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mt-3">
@@ -149,18 +168,18 @@ echo $header;
                                                                 <div class="row mt-3">
                                                                     <div class="col">
                                                                         <label>Organization *</label>
-                                                                        <input class="multisteps-form__input form-control all_input_second" type="text" maxlength="35" id="organization" name="organization" placeholder="eg. Associated APM">
+                                                                        <input class="multisteps-form__input form-control all_input_second" type="text" maxlength="35" id="organization" name="organization" placeholder="eg. Associated APM" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                                                     </div>
                                                                     <div class="col">
                                                                         <label>Position *</label>
-                                                                        <input class="multisteps-form__input form-control all_input_second" type="text" maxlength="25" id="position" name="position" placeholder="eg. Associated">
+                                                                        <input class="multisteps-form__input form-control all_input_second" type="text" maxlength="25" id="position" name="position" placeholder="eg. Associated" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mt-3">
                                                                     <div class="col-12 col-sm-6">
                                                                         <label>Address</label>
                                                                         <input class="multisteps-form__input form-control" type="text" id="address" maxlength="50" name="address" placeholder="eg. 1388 Sutter Street
-                                                                                San Francisco 94109 California USA">
+                                                                                San Francisco 94109 California USA" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                                                     </div>
                                                                     <div class="col-6 col-sm-3 mt-3 mt-sm-0">
                                                                         <label>Organization Country *</label>
@@ -207,7 +226,7 @@ echo $header;
                                                                     <div class="col-12 col-sm-4"></div>
                                                                     <div class="col-12 col-sm-4">
                                                                         <label>Scholarship/Speaker code</label>
-                                                                        <input class="multisteps-form__input form-control" type="text" id="scholarship" name="scholarship" maxlength="10" placeholder="eg. XXX0X0X0X0">
+                                                                        <input class="multisteps-form__input form-control" type="text" id="scholarship" name="scholarship" maxlength="10" placeholder="eg. XXX0X0X0X0" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                                                     </div>
                                                                     <div class="col-12 col-sm-4 mt-3 mt-sm-0"></div>
                                                                 </div>
@@ -394,15 +413,34 @@ echo $header;
                                                                     <div class="row mt-1">
                                                                         <div class="col-12 col-sm-4">
                                                                             <label>Business name *</label>
-                                                                            <input class="multisteps-form__input form-control" type="text" id="business_name_iva" name="business_name_iva" placeholder="eg. Christopher Prior Jones" maxlength="20" onfocus="focused(this)" onfocusout="defocused(this)">
+                                                                            <input class="multisteps-form__input form-control all_input_finalize" type="text" id="business_name_iva" name="business_name_iva" placeholder="eg. Christopher Prior Jones" maxlength="20" onfocus="focused(this)" onfocusout="defocused(this)" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                                                         </div>
                                                                         <div class="col-12 col-sm-4 mt-1 mt-sm-0">
                                                                             <label>VAT Code *</label>
-                                                                            <input class="multisteps-form__input form-control" type="text" id="code_iva" name="code_iva" placeholder="eg. CPJ41250AS" maxlength="13" onfocus="focused(this)" onfocusout="defocused(this)">
+                                                                            <input class="multisteps-form__input form-control all_input_finalize" type="text" id="code_iva" name="code_iva" placeholder="eg. CPJ41250AS" maxlength="13" onfocus="focused(this)" onfocusout="defocused(this)" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
+                                                                        </div>
+                                                                        <!-- <div class="col-12 col-sm-4 mt-1 mt-sm-0">
+                                                                            <label>Payment method *</label>
+                                                                            <select class="multisteps-form__select form-control all_input_finalize_select" name="payment_method_iva" id="payment_method_iva">
+                                                                                <option value="" disabled selected>Select Option</option>
+                                                                                <option value="ELECTRONIC TRANSFER">ELECTRONIC TRANSFER</option>
+                                                                                <option value="CREDIT OR DEBIT CARD">CREDIT OR DEBIT CARD</option>
+                                                                            </select>
+                                                                        </div> -->
+                                                                    </div>
+                                                                    <div class="row mt-1">
+                                                                        <div class="col-12 col-sm-5">
+                                                                            <label>Email to send the receipt * </label>
+                                                                            <input class="multisteps-form__input form-control all_input_finalize" type="text"  id="email_receipt_iva" name="email_receipt_iva" placeholder="eg. user@domain.com" onfocus="focused(this)" onfocusout="defocused(this)">
+                                                                            <span class="mb-0 text-sm" id="error_email_send" style="display:none;color:red;">Wrong email</span>
+                                                                        </div>
+                                                                        <div class="col-12 col-sm-2">
+                                                                            <label>Postal Code *</label>
+                                                                            <input class="multisteps-form__input form-control all_input_finalize" type="text" id="postal_code_iva" name="postal_code_iva" maxlength="5" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="eg. 50398">
                                                                         </div>
                                                                         <div class="col-12 col-sm-4 mt-1 mt-sm-0">
                                                                             <label>Payment method *</label>
-                                                                            <select class="multisteps-form__select form-control all_input_select" name="payment_method_iva" id="payment_method_iva">
+                                                                            <select class="multisteps-form__select form-control all_input_finalize_select" name="payment_method_iva" id="payment_method_iva">
                                                                                 <option value="" disabled selected>Select Option</option>
                                                                                 <option value="ELECTRONIC TRANSFER">ELECTRONIC TRANSFER</option>
                                                                                 <option value="CREDIT OR DEBIT CARD">CREDIT OR DEBIT CARD</option>
@@ -410,18 +448,7 @@ echo $header;
                                                                         </div>
                                                                     </div>
                                                                     <div class="row mt-1">
-                                                                        <div class="col-12 col-sm-5">
-                                                                            <label>Email to send the receipt * </label>
-                                                                            <input class="multisteps-form__input form-control" type="text"  id="email_receipt_iva" name="email_receipt_iva" placeholder="eg. user@domain.com" onfocus="focused(this)" onfocusout="defocused(this)">
-                                                                            <span class="mb-0 text-sm" id="error_email_send" style="display:none;color:red;">Wrong email</span>
-                                                                        </div>
-                                                                        <div class="col-12 col-sm-2">
-                                                                            <label>Postal Code *</label>
-                                                                            <input class="multisteps-form__input form-control" type="text" id="postal_code_iva" name="postal_code_iva" maxlength="5" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="eg. 50398">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row mt-1">
-
+                                                                        
                                                                     </div>
                                                                     <div class="row text-center mt-1">
                                                                         <div class="col-10 mx-auto">
@@ -431,7 +458,7 @@ echo $header;
                                                                         </div>
                                                                     </div>
                                                                     <div class="button-row d-flex mt-1">
-                                                                        <button class="btn bg-gradient-success ms-auto mb-0" type="button" onclick="myFunction_TermsConditions()">Finalize</button>
+                                                                        <button class="btn bg-gradient-success ms-auto mb-0" id="finalize" type="button" onclick="myFunction_TermsConditions()" disabled>Finalize</button>
                                                                     </div>
                                                                 </div>
                                                             </div>

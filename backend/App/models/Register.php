@@ -15,7 +15,7 @@ class Register
     {
         $mysqli = Database::getInstance();
         $query = <<<sql
-        INSERT INTO utilerias_administradores VALUES(null,:nombre,:usuario,:title,:name_user,:middle_name,:surname,:second_surname,:telephone,:international_code,:id_nationality,:id_state, :id_country,:organization,:position_organization,:address,:organization_country,:organization_postal_code,:wadd_member,:apm_member,:scholarship,:business_name_iva,:code_iva,:payment_method_iva,:email_receipt_iva,:postal_code_iva, null, 0,0,now(),:method_pay, :reference, :amout_due)                        
+        INSERT INTO utilerias_administradores VALUES(null,:nombre,:usuario,:title,:name_user,:middle_name,:surname,:second_surname,:telephone,:international_code,:id_nationality,:id_state, :id_country,:organization,:position_organization,:address,:organization_country,:organization_postal_code,:wadd_member,:apm_member,:scholarship,:business_name_iva,:code_iva,:payment_method_iva,:email_receipt_iva,:postal_code_iva, null, 0,0,now(),:method_pay, :reference, :amout_due, null)                        
 sql;
 
         $parametros = array(
