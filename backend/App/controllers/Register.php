@@ -136,7 +136,6 @@ html;
                 document.getElementById('second_surname').disabled = false;
                 document.getElementById('telephone').disabled = false;
                 document.getElementById('telephone_code').disabled = false;
-                document.getElementById('specialties').disabled = false;
                 document.getElementById('nationality').disabled = false;
                 document.getElementById('state').disabled = false;
                 document.getElementById('residence').disabled = false;
@@ -171,7 +170,7 @@ html;
        {
           if(input_require[0].value != "" && input_require[1].value != "" && input_require[2].value != "" && input_require[3].value != "") 
           {
-               input_require_select[4].addEventListener("change", () => 
+               input_require_select[3].addEventListener("change", () => 
                {
                   document.getElementById("next_one").disabled = false
                })
@@ -380,9 +379,6 @@ html;
         $nationality = MasterDom::getDataAll('nationality');
         $register->_nationality = $nationality;
 
-        $specialties = MasterDom::getDataAll('specialties');
-        $register->_specialties = $specialties;
-
         $state = MasterDom::getDataAll('state');
         $register->_state = $state;
 
@@ -431,8 +427,7 @@ html;
         $payment_method_iva = MasterDom::getDataAll('payment_method_iva');
         $register->_payment_method_iva = $payment_method_iva;
 
-        $email_receipt_iva = $_POST['email_receipt_iva'];
-        //$email_receipt_iva = MasterDom::getDataAll('email_receipt_iva');
+        $email_receipt_iva = MasterDom::getDataAll('email_receipt_iva');
         $register->_email_receipt_iva = $email_receipt_iva;
 
         $postal_code_iva = MasterDom::getDataAll('postal_code_iva');
@@ -452,103 +447,26 @@ html;
         $reference_user = $sub_name.$sub_name_sur.$dia.$mes.$año;
         $register->_reference_user = $reference_user;
 
-        // echo $email_receipt_iva;
-        // exit;
-
-        if($register->_specialties == 'Students')
-        {
-            $costo = '200'; //Costo estudiante para Mexico e Internacional
-        }
-        else
-        {
-            if($register->_specialties == 'Residents')
-            {
-                if($register->_wadd_member == 'yes' ||  $register->_apm_member == 'yes')
-                {
-                    $costo = '200'; //Costo Residente si es socio
-                }
-                else
-                {
-                    $costo = '250'; //Costo residente si no es socio
-                }
-            }
-            else
-            {
-                if($register->_specialties == 'Psychiatrist' || $register->_specialties == 'Child Psychiatry' || $register->_specialties == 'Neurology'
-                    || $register->_specialties == 'Pediatric Neurology' || $register->_specialties == 'Paidapsychiatry' || $register->_specialties == 'Pedagogy'
-                    || $register->_specialties == 'Psychogeriatrics' || $register->_specialties == 'Psychology' || $register->_specialties == 'Clinical psychology'
-                )
-                {
-                    if($register->_wadd_member == 'yes' ||  $register->_apm_member == 'yes')
-                    {
-                        $costo = '400'; //Costo para socios de especialidades
-                    }
-                    else
-                    {
-                        $res_costo = RegisterDao::getByCost($nationality);
-                        $costo = $res_costo['cost_enero_marzo'];//costo para no socios de otras especialidades
-                    }
-
-                }
-                else
-                {
-                    if($register->_specialties == 'Others')
-                    {
-                        if($register->_nationality != '156')
-                        {
-                            if($register->_wadd_member == 'no' ||  $register->_apm_member == 'no')
-                            {
-                                $costo = '400'; //Costo para otros no socios internacionales
-                            }
-                            else
-                            {
-                                if($register->_wadd_member == 'yes' ||  $register->_apm_member == 'yes')
-                                {
-                                    $costo = '300'; //Costo para otros socios internacionales
-                                }
-                            }
-                        }
-                        else
-                        {
-                            if($register->_nationality == '156')
-                            {
-                                if($register->_wadd_member == 'no' ||  $register->_apm_member == 'no')
-                                {
-                                    $costo = '350'; //Costo para otros no socios Mexicanos
-                                }
-                                else
-                                {
-                                    if($register->_wadd_member == 'yes' ||  $register->_apm_member == 'yes')
-                                    {
-                                        $costo = '300'; //Costo para otros socios Mexicanos
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-
-            }
-        }
-
+        $res_costo = RegisterDao::getByCost($nationality);
+        $costo = $res_costo['cost_enero_marzo'];
         $register->_costo = $costo;
 
 
         $id = RegisterDao::insert($register);
         if($id >= 1)
         {
-            $this->alerta($id,'add',$method_pay, $name_register, $costo, $fecha_limite_pago,$reference_user,$email_receipt_iva);
+            $this->alerta($id,'add',$method_pay, $name_register, $costo, $fecha_limite_pago,$reference_user);
             
         }else
         {
-            $this->alerta($id,'error',$method_pay, $name_register,"","","",$email_receipt_iva);
+            $this->alerta($id,'error',$method_pay, $name_register,"","","");
             
         }
 
         
     }
 
-    public function alerta($id, $parametro, $type_deposit, $name_register, $costo, $limit_pay, $reference_user,$email_user){
+    public function alerta($id, $parametro, $type_deposit, $name_register, $costo, $limit_pay, $reference_user){
         $regreso = "/Login/";
         $pay = '';
 
@@ -557,14 +475,13 @@ html;
 
             if($type_deposit == 'paypal')
             {
-                
                 $pay = 'CREDIT OR DEBIT CARD';
                 $name = $name_register;
                 $message_pay = 'Important note: Please include the reference provided by this system in the field "Concepto 
                 de pago" as per instructions above. The payment reference must be entered in capital 
                 letters. Do not add any spaces between names or include any other punctuation marks, as 
                 this may affect your bank transfer confirmation.';
-                $amount = $costo." USD";
+                $amount = $costo;
                 $date_pay = $limit_pay;
                 $reference = $reference_user;
                 $account_number = '021180040158530967';
@@ -577,12 +494,11 @@ html;
             }
             if($type_deposit == 'electronic')
             {
-                
                 $pay = 'ELECTRONIC TRANSFER';
                 $name = $name_register;
                 $addres = 'Periferico Sur No. 4194, Int. 104, Col.Jardines del Pedregal, CDMX, CP.01900 ';
                 $message_pay = '';
-                $amount = $costo." USD";
+                $amount = $costo;
                 $date_pay = $limit_pay;
                 $reference = $reference_user;
                 $account_number = '4015853096';
@@ -610,8 +526,6 @@ html;
             'bank' => $bank,
             'name_association' => $name_association,
             'swift_account' => $swift_account,
-            'addres' => $addres,
-            'email_send' => $email_user
         ];
 
         $mailer = new Mailer();

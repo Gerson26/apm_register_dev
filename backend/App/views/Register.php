@@ -105,32 +105,13 @@ echo $header;
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mt-3">
-                                                                    <div class="col-12 col-sm-4">
+                                                                    <div class="col-12 col-sm-6">
                                                                         <label>Telephone</label>
                                                                         <input class="multisteps-form__input form-control" type="text" id="telephone" name="telephone" maxlength="10" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="eg. (555) 555-1234" disabled>
                                                                     </div>
-                                                                    <div class="col-12 col-sm-4">
+                                                                    <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                                                         <label>International dialling code</label>
                                                                         <input class="multisteps-form__input form-control" type="text" id="telephone_code" name="telephone_code" maxlength="3" onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;" placeholder="eg. +1" disabled>
-                                                                    </div>
-                                                                    <div class="col-12 col-sm-4">
-                                                                        <label>Specialties *</label>
-                                                                        <select class="multisteps-form__select form-control all_input_select" name="specialties" id="specialties" disabled>
-                                                                            <option value="" disabled selected>Select Option</option>
-                                                                            <option value="Psychiatrist">Psychiatrist</option>
-                                                                            <option value=">Child Psychiatry">Child Psychiatry</option>
-                                                                            <option value="Neurology">Neurology</option>
-                                                                            <option value="Pediatric Neurology">Pediatric Neurology</option>
-                                                                            <option value="Paidapsychiatry">Paidapsychiatry</option>
-                                                                            <option value="Pedagogy">Pedagogy</option>
-                                                                            <option value="Psychogeriatrics">Psychogeriatrics</option>
-                                                                            <option value="Psychology">Psychology</option>
-                                                                            <option value="Clinical psychology">Clinical psychology</option>
-                                                                            <option value="Residents">Residents</option>
-                                                                            <option value="Students">Students</option>
-                                                                            <option value="Others">Others</option>
-
-                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mt-3">
