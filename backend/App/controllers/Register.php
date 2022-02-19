@@ -5,7 +5,6 @@ defined("APPPATH") OR die("Access denied");
 use \Core\View;
 use \Core\MasterDom;
 use \App\models\Register AS RegisterDao;
-use \App\controllers\Mailer;
 
 class Register{
     private $_contenedor;
@@ -207,29 +206,6 @@ html;
         button_active_two.addEventListener("click", (event) => {
               event.preventDefault()
         })
-
-        let button_active_finalize  = document.getElementById("finalize")
-        let input_require_finalize = document.querySelectorAll(".all_input_finalize")
-        let input_require_finalize_select = document.querySelectorAll(".all_input_finalize_select")
-
-        input_require_finalize[3].addEventListener("keyup", () => 
-       {
-          if(input_require_finalize[0].value != "" && input_require_finalize[1].value != "" && input_require_finalize[3].value != "") 
-          {
-            input_require_finalize_select[0].addEventListener("change", () => 
-               {
-                  document.getElementById("finalize").disabled = false
-               })
-          } 
-          else 
-          {
-              document.getElementById("finalize").disabled = true
-          }
-        })
-        
-        button_active_finalize.addEventListener("click", (event) => {
-              event.preventDefault()
-        })
         
         function myFunction() 
         {
@@ -347,7 +323,6 @@ html;
 
     public function Success(){
 
-
         $register = new \stdClass();
 
         $name = MasterDom::getDataAll('name_user');
@@ -456,14 +431,10 @@ html;
         if($id >= 1)
         {
             $this->alerta($id,'add',$method_pay, $name_register, $costo, $fecha_limite_pago,$reference_user);
-            
         }else
         {
             $this->alerta($id,'error',$method_pay, $name_register,"","","");
-            
         }
-
-        
     }
 
     public function alerta($id, $parametro, $type_deposit, $name_register, $costo, $limit_pay, $reference_user){
@@ -490,7 +461,6 @@ html;
                 $swift_account = 'BIMEMXMM';
                 $estilo = 'style="display: none;"';
                 $estilo_boton = 'style="display: block;"';
-
             }
             if($type_deposit == 'electronic')
             {
@@ -508,28 +478,13 @@ html;
                 $estilo = 'style="display: block;"';
                 $estilo_boton = 'style="display: none;"';
             }
+
         }
 
         if($parametro == "error")
         {
             $mensaje = "Al parecer ha ocurrido un problema";
         }
-
-        $msg = [
-            'pay' => $pay,
-            'name' => $name_register,
-            'message_pay' => $message_pay,
-            'amount' => $costo,
-            'date_pay' => $limit_pay,
-            'reference' => $reference_user,
-            'account_number' => $account_number,
-            'bank' => $bank,
-            'name_association' => $name_association,
-            'swift_account' => $swift_account,
-        ];
-
-        $mailer = new Mailer();
-        $mailer->mailer($msg);
 
         View::set('regreso',$regreso);
         View::set('pay',$pay);
